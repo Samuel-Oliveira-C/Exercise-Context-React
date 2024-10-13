@@ -20,3 +20,4 @@ const ComponentProvider = ({children}:ChildrenComponent) =>{
 
 
 export{ComponentProvider,Context}
+export type {ContextState}
