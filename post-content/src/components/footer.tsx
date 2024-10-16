@@ -7,7 +7,7 @@ const FooterComponent = () =>{
     
     return(
         <footer>
-            <p>{context?.post? <p>Total de post: {context?.post.length} </p>: null}</p>
+            {context && <p>{context.post? `Total de post: ${context.post.length}`: `Total de post: 0` }</p> }
         </footer>
     );
 }

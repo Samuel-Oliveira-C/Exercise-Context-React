@@ -1,7 +1,15 @@
 
-type ActionAddPost = "add";
+type ActionAddPost = {
+    type: "add",
+    id: string,
+    title: string,
+    body: string
+};
 
-type ActionRemovePost = "remove";
+type ActionRemovePost = {
+    type: "remove",
+    id:string
+};
 
 type Actions = ActionAddPost | ActionRemovePost;
 
@@ -13,13 +21,15 @@ type PropsState = {
 
 const reducerFunction = (state:PropsState[],action: Actions): PropsState[] => {
 
-    switch (action) {
+    switch (action.type) {
         case "add":
-        //Gerar um novo array
-            return state;
+            return [...state,{
+                    id:action.id,
+                    title:action.title,
+                    body:action.body
+                }];
         case "remove":
-        //excluir e gerar um novo array
-        return state;
+            return state.filter(element => element.id !== action.id);
         default:
             return state;
     }
@@ -28,3 +38,5 @@ const reducerFunction = (state:PropsState[],action: Actions): PropsState[] => {
 
 export {reducerFunction};
 export type { Actions,PropsState }
+
+//TODO O projeto é para guardar Posts e adicionar
