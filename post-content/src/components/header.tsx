@@ -3,15 +3,13 @@ import { Context } from "@/context/postContext";
 
 const generateId = ():string => {
     const date = new Date();
-    const returnGenerateId = `${Math.floor(Math.random() * 9001) + 1000} ${date.getUTCMilliseconds}` ;
-    console.log(returnGenerateId)
+    const returnGenerateId = `${Math.floor(Math.random() * 9001) + 1000} ${date.getMilliseconds()}` ;
     return returnGenerateId;
 }
 
 const HeaderComponent = () =>{
     //context
     const context = useContext(Context);
-    const cbContext = useCallback(() => context?.dispatch({type: "add",id:generateId(),title:inputState,body:textAreaState}),[])
     //Input
     const [inputState,setState] = useState("");
     const cbEventInput = useCallback((e:ChangeEvent<HTMLInputElement>) => setState(() => e.target.value),[])
@@ -43,7 +41,7 @@ const HeaderComponent = () =>{
                 <div>
                 <button 
                     className="hover:text-orange-300 hover:underline"
-                    onClick={() => cbContext()}
+                    onClick={() => context?.dispatch({type: "add",id:generateId(),title:inputState,body:textAreaState})}
                 >
                     Adicionar Post</button>
                 </div>
@@ -54,8 +52,3 @@ const HeaderComponent = () =>{
 
 export {HeaderComponent}
 
-//TODO o Projeto é para guardar post e adicionar
-
-/** Agora é hora de criar o post: id,title e body com o dispatch do context
- * 
- */

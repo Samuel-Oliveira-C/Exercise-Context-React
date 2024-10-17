@@ -31,7 +31,7 @@ const reducerFunction = (state:PropsState[],action: Actions): PropsState[] => {
         case "remove":
             return state.filter(element => element.id !== action.id);
         default:
-            return state;
+            return [...state];
     }
 
 }
