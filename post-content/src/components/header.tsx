@@ -1,8 +1,17 @@
 import { ChangeEvent, useCallback, useContext, useState } from "react"
 import { Context } from "@/context/postContext";
 
+const generateId = ():string => {
+    const date = new Date();
+    const returnGenerateId = `${Math.floor(Math.random() * 9001) + 1000} ${date.getUTCMilliseconds}` ;
+    console.log(returnGenerateId)
+    return returnGenerateId;
+}
+
 const HeaderComponent = () =>{
+    //context
     const context = useContext(Context);
+    const cbContext = useCallback(() => context?.dispatch({type: "add",id:generateId(),title:inputState,body:textAreaState}),[])
     //Input
     const [inputState,setState] = useState("");
     const cbEventInput = useCallback((e:ChangeEvent<HTMLInputElement>) => setState(() => e.target.value),[])
@@ -12,9 +21,10 @@ const HeaderComponent = () =>{
     return(
         <header className="flex flex-col">
             <h1>Titulo Da pagina</h1>
-            <div>
+            <div className="flex flex-col gap-2">
                 <div>
                     <input 
+                        className="text-black"
                         type="text"
                         value={inputState}
                         onChange={keyboard => cbEventInput(keyboard)}
@@ -22,6 +32,7 @@ const HeaderComponent = () =>{
                 </div>
                 <div>
                     <textarea 
+                        className="text-black"
                         name="textArea" 
                         id="textArea"
                         value={textAreaState}
@@ -29,10 +40,22 @@ const HeaderComponent = () =>{
                     >
                     </textarea>
                 </div>
-                <button className="hover:text-orange-300 hover:underline">Adicionar Post</button>
+                <div>
+                <button 
+                    className="hover:text-orange-300 hover:underline"
+                    onClick={() => cbContext()}
+                >
+                    Adicionar Post</button>
+                </div>
             </div>
         </header>
     )
 }
 
 export {HeaderComponent}
+
+//TODO o Projeto é para guardar post e adicionar
+
+/** Agora é hora de criar o post: id,title e body com o dispatch do context
+ * 
+ */

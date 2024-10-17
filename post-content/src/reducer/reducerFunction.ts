@@ -39,4 +39,3 @@ const reducerFunction = (state:PropsState[],action: Actions): PropsState[] => {
 export {reducerFunction};
 export type { Actions,PropsState }
 
-//TODO O projeto é para guardar Posts e adicionar
