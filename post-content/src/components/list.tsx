@@ -22,7 +22,7 @@ export {ListRender}
 
 //TODO o Projeto é para guardar post e adicionar
 
-/** a função de remover está funcionando direitinho
- * mas estou com problemas com o fato de pegar dados do title e body
- * 
+/** Fazer os teste
+ * saber porque não funcionou o usecallback no header.tsx
+ *  possivel resposta: como é uma prop quem tem que usar o usecallback é o postContext não o header.tsx
  */
