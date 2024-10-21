@@ -1,5 +1,6 @@
 import { reducerFunction, Actions, PropsState } from "@/reducer/reducerFunction";
 
+
 describe("Essa função deve receber um array de objetos e deve fazer o actions dela corretamente", () => {
     // Estado inicial mock para os testes
     const initialState: PropsState[] = [

@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { useContext } from 'react'
 import { Context, ProviderComponent } from "@/context/postContext"
-import { PropsState } from '@/reducer/reducerFunction'
+
 
 // Componente de teste para verificar o contexto
 const TestComponent = () => {
