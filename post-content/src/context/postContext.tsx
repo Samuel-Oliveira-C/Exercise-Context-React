@@ -22,4 +22,5 @@ const ProviderComponent = ({children}:ChildrenComponent) => {
 }
 
 export { Context,ProviderComponent }
+export type {ContextType}
 
